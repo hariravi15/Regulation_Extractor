@@ -34,7 +34,7 @@ Respond with either "Yes" or "No" only.
 """
         CheckResponse = Client.chat.completions.create(model="gpt-3.5-turbo",messages=[{"role": "user", "content": CheckPrompt}])
         if "yes" in CheckResponse.choices[0].message.content.strip().lower():
-            st.success("✅ Document looks like a requirement document.")
+            st.success("Document looks like a requirement document.")
             with st.spinner("Extracting system requirements..."):
                 Embeddings = OpenAIEmbeddings()
                 VectorStore = InMemoryVectorStore.from_documents(LangchainDocuments, Embeddings)
